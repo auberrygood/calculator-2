@@ -1,7 +1,7 @@
 """CLI application for a prefix-notation calculator."""
 
 from arithmetic import (add, subtract, multiply, divide, square, cube,
-                        power, mod, )
+                        power, mod, add_mult, add_cubes)
 
 from functools import reduce
 #import ascii
@@ -19,18 +19,18 @@ def change_user_input_to_list(command_list):
         if 'q' in user_input_list:
             print ("Thanks for playing this awesome game")
             break 
-        elif len (user_input_list) < 2: 
+        if user_input_list[0] not in command_list: 
+            print ('Please enter valid command') 
+            continue  
+        if len (user_input_list) < 2: 
             print ('Not enough input')
             continue
-        elif user_input_list[0] not in command_list: 
-            print ('Please enter valid command') 
-            continue 
         elif len (user_input_list) < 3: 
             num2 = '0'
         else: 
             num2 = user_input_list[2]
         
-        if len (user_input_list) < 4:
+        elif len (user_input_list) < 4:
             num3 = '0' 
         else: 
             num3 = user_input_list[3]
